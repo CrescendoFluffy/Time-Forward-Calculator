@@ -1,18 +1,21 @@
-function updateLiveTime() {
-  const now = new Date();
-  document.getElementById("liveTime").textContent = "Live Time: " + formatDate(now);
+function startLiveTime() {
+  function update() {
+    const now = new Date();
+    document.getElementById("liveTime").textContent =
+      "Live Time: " + formatDate(now);
+    requestAnimationFrame(update);
+  }
+  update();
 }
-setInterval(updateLiveTime, 1000);
-updateLiveTime();
+startLiveTime();
 
 function calculateTime() {
-  const years = parseInt(document.getElementById("years").value) || 0;
-  const months = parseInt(document.getElementById("months").value) || 0;
-  const days = parseInt(document.getElementById("days").value) || 0;
-  const hours = parseInt(document.getElementById("hours").value) || 0;
-  const minutes = parseInt(document.getElementById("minutes").value) || 0;
-  const seconds = parseInt(document.getElementById("seconds").value) || 0;
+  const ids = ["years", "months", "days", "hours", "minutes", "seconds"];
+  const values = ids.map(
+    (id) => parseInt(document.getElementById(id).value) || 0
+  );
 
+  const [years, months, days, hours, minutes, seconds] = values;
   const now = new Date();
   const future = new Date(now);
 
@@ -29,19 +32,31 @@ function calculateTime() {
   `;
 
   document.getElementById("result").innerHTML = resultHTML;
+  saveInputValues(); // save values after calculation
 }
 
 function resetFields() {
   const fields = ["years", "months", "days", "hours", "minutes", "seconds"];
-  fields.forEach(id => document.getElementById(id).value = 0);
+  fields.forEach((id) => (document.getElementById(id).value = 0));
   document.getElementById("result").innerHTML = "";
+  localStorage.removeItem("timeInputs");
 }
 
 function formatDate(date) {
   const day = date.getDate();
   const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   const suffix = getDaySuffix(day);
   const month = monthNames[date.getMonth()];
@@ -60,9 +75,47 @@ function formatDate(date) {
 function getDaySuffix(day) {
   if (day >= 11 && day <= 13) return "th";
   switch (day % 10) {
-    case 1: return "st";
-    case 2: return "nd";
-    case 3: return "rd";
-    default: return "th";
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
   }
 }
+
+function saveInputValues() {
+  const ids = ["years", "months", "days", "hours", "minutes", "seconds"];
+  const values = {};
+  ids.forEach((id) => {
+    values[id] = document.getElementById(id).value;
+  });
+  localStorage.setItem("timeInputs", JSON.stringify(values));
+}
+
+function loadInputValues() {
+  const saved = localStorage.getItem("timeInputs");
+  if (!saved) return;
+  const values = JSON.parse(saved);
+  Object.keys(values).forEach((id) => {
+    const input = document.getElementById(id);
+    if (input) input.value = values[id];
+  });
+}
+loadInputValues();
+
+// Dark Mode Toggle
+const darkToggle = document.getElementById("darkToggle");
+darkToggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode", darkToggle.checked);
+  localStorage.setItem("darkMode", darkToggle.checked);
+});
+
+// Restore Dark Mode on Load
+window.addEventListener("DOMContentLoaded", () => {
+  const darkPref = localStorage.getItem("darkMode") === "true";
+  darkToggle.checked = darkPref;
+  document.body.classList.toggle("dark-mode", darkPref);
+});
