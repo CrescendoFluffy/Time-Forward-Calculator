@@ -6,19 +6,6 @@ function calculateTime() {
   const minutes = parseInt(document.getElementById("minutes").value) || 0;
   const seconds = parseInt(document.getElementById("seconds").value) || 0;
 
-  // Prevent negative input
-  if (
-    years < 0 ||
-    months < 0 ||
-    days < 0 ||
-    hours < 0 ||
-    minutes < 0 ||
-    seconds < 0
-  ) {
-    alert("Please enter non-negative values.");
-    return;
-  }
-
   const now = new Date();
   const future = new Date(now);
 
@@ -37,6 +24,7 @@ function calculateTime() {
   document.getElementById("result").innerHTML = resultHTML;
 }
 
+// Helper to format date like "5th May 2025, 4:30 PM"
 function formatDate(date) {
   const day = date.getDate();
   const monthNames = [
@@ -67,6 +55,7 @@ function formatDate(date) {
   return `${day}${suffix} ${month} ${year}, ${hours}:${minutes} ${ampm}`;
 }
 
+// Helper to add st, nd, rd, th
 function getDaySuffix(day) {
   if (day >= 11 && day <= 13) return "th";
   switch (day % 10) {
@@ -80,21 +69,3 @@ function getDaySuffix(day) {
       return "th";
   }
 }
-
-// Reset all fields
-function resetFields() {
-  const fields = ["years", "months", "days", "hours", "minutes", "seconds"];
-  fields.forEach((id) => (document.getElementById(id).value = 0));
-  document.getElementById("result").innerHTML = "";
-}
-
-// Live clock display function
-function updateLiveTime() {
-  const now = new Date();
-  document.getElementById("liveTime").innerText = `Current Time: ${formatDate(
-    now
-  )}`;
-}
-
-// Update live time every second
-setInterval(updateLiveTime, 1000);
