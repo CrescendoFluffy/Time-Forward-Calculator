@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Forward Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -41,13 +40,13 @@
         </div>
 
         <button onclick="calculateTime()">Calculate Future Time</button>
+        <button onclick="resetFields()" class="reset">Reset</button>
 
         <div class="result" id="result">
             <!-- Result will appear here -->
         </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 
 </html>

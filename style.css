@@ -13,6 +13,13 @@ h1 {
   color: #2c3e50;
 }
 
+.container {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .input-group {
   display: flex;
   justify-content: space-between;
@@ -32,13 +39,6 @@ h1 {
   border-radius: 6px;
 }
 
-.container {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
 button {
   margin-top: 20px;
   width: 100%;
@@ -55,6 +55,15 @@ button:hover {
   background-color: #2980b9;
 }
 
+button.reset {
+  background-color: #e74c3c;
+  margin-top: 10px;
+}
+
+button.reset:hover {
+  background-color: #c0392b;
+}
+
 .result {
   margin-top: 25px;
   background: #ecf0f1;
@@ -67,7 +76,7 @@ button:hover {
   color: #2c3e50;
 }
 
-/* Mobile responsiveness */
+/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   body {
     padding: 20px;

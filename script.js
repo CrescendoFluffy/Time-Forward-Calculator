@@ -24,22 +24,11 @@ function calculateTime() {
   document.getElementById("result").innerHTML = resultHTML;
 }
 
-// Helper to format date like "5th May 2025, 4:30 PM"
 function formatDate(date) {
   const day = date.getDate();
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
   ];
   const suffix = getDaySuffix(day);
   const month = monthNames[date.getMonth()];
@@ -50,22 +39,28 @@ function formatDate(date) {
   const ampm = hours >= 12 ? "PM" : "AM";
 
   hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
+  hours = hours ? hours : 12;
 
   return `${day}${suffix} ${month} ${year}, ${hours}:${minutes} ${ampm}`;
 }
 
-// Helper to add st, nd, rd, th
 function getDaySuffix(day) {
   if (day >= 11 && day <= 13) return "th";
   switch (day % 10) {
-    case 1:
-      return "st";
-    case 2:
-      return "nd";
-    case 3:
-      return "rd";
-    default:
-      return "th";
+    case 1: return "st";
+    case 2: return "nd";
+    case 3: return "rd";
+    default: return "th";
   }
+}
+
+// 💥 Reset all fields and result
+function resetFields() {
+  document.getElementById("years").value = 0;
+  document.getElementById("months").value = 0;
+  document.getElementById("days").value = 0;
+  document.getElementById("hours").value = 0;
+  document.getElementById("minutes").value = 0;
+  document.getElementById("seconds").value = 0;
+  document.getElementById("result").innerHTML = "";
 }
