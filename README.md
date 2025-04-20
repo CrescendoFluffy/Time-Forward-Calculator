@@ -16,7 +16,7 @@
 
 ## Demo
 
-You can try out the Time Forward Calculator live by visiting [Time Forward Calculator Demo](https://example.com).
+You can try out the Time Forward Calculator live by visiting [Time Forward Calculator]([https://example.com](https://crescendofluffy.github.io/Time-Forward-Calculator/)).
 
 ---
 
