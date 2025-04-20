@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Forward Calculator</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
@@ -39,16 +40,11 @@
             <input type="number" id="seconds" value="0" min="0">
         </div>
 
-        <div class="button-group">
-            <button onclick="calculateTime()">Calculate Future Time</button>
-            <button onclick="resetFields()" class="reset-btn">Reset</button>
-        </div>
+        <button onclick="calculateTime()">Calculate Future Time</button>
 
         <div class="result" id="result">
             <!-- Result will appear here -->
         </div>
-
-        <div id="liveTime" class="live-time"></div>
     </div>
 
     <script src="script.js"></script>
