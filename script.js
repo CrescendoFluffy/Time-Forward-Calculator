@@ -1,3 +1,10 @@
+function updateLiveTime() {
+  const now = new Date();
+  document.getElementById("liveTime").textContent = "Live Time: " + formatDate(now);
+}
+setInterval(updateLiveTime, 1000);
+updateLiveTime();
+
 function calculateTime() {
   const years = parseInt(document.getElementById("years").value) || 0;
   const months = parseInt(document.getElementById("months").value) || 0;
@@ -17,11 +24,17 @@ function calculateTime() {
   future.setSeconds(future.getSeconds() + seconds);
 
   const resultHTML = `
-      <strong>Current Time:</strong> ${formatDate(now)}<br>
-      <strong>Future Time:</strong> ${formatDate(future)}
-    `;
+    <strong>Current Time:</strong> ${formatDate(now)}<br>
+    <strong>Calculated Time:</strong> ${formatDate(future)}
+  `;
 
   document.getElementById("result").innerHTML = resultHTML;
+}
+
+function resetFields() {
+  const fields = ["years", "months", "days", "hours", "minutes", "seconds"];
+  fields.forEach(id => document.getElementById(id).value = 0);
+  document.getElementById("result").innerHTML = "";
 }
 
 function formatDate(date) {
@@ -52,15 +65,4 @@ function getDaySuffix(day) {
     case 3: return "rd";
     default: return "th";
   }
-}
-
-// 💥 Reset all fields and result
-function resetFields() {
-  document.getElementById("years").value = 0;
-  document.getElementById("months").value = 0;
-  document.getElementById("days").value = 0;
-  document.getElementById("hours").value = 0;
-  document.getElementById("minutes").value = 0;
-  document.getElementById("seconds").value = 0;
-  document.getElementById("result").innerHTML = "";
 }

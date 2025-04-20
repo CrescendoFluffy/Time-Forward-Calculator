@@ -2,51 +2,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Time Forward Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
     <h1>🕒 Time Forward Calculator</h1>
+    <div class="live-time" id="liveTime"></div>
 
     <div class="container">
         <div class="input-group">
             <label for="years">Years:</label>
-            <input type="number" id="years" value="0" min="0">
+            <input type="number" id="years" value="0">
         </div>
         <div class="input-group">
             <label for="months">Months:</label>
-            <input type="number" id="months" value="0" min="0">
+            <input type="number" id="months" value="0">
         </div>
         <div class="input-group">
             <label for="days">Days:</label>
-            <input type="number" id="days" value="0" min="0">
+            <input type="number" id="days" value="0">
         </div>
         <div class="input-group">
             <label for="hours">Hours:</label>
-            <input type="number" id="hours" value="0" min="0">
+            <input type="number" id="hours" value="0">
         </div>
         <div class="input-group">
             <label for="minutes">Minutes:</label>
-            <input type="number" id="minutes" value="0" min="0">
+            <input type="number" id="minutes" value="0">
         </div>
         <div class="input-group">
             <label for="seconds">Seconds:</label>
-            <input type="number" id="seconds" value="0" min="0">
+            <input type="number" id="seconds" value="0">
         </div>
 
-        <button onclick="calculateTime()">Calculate Future Time</button>
+        <button onclick="calculateTime()" class="calculate">Calculate Future Time</button>
         <button onclick="resetFields()" class="reset">Reset</button>
 
-        <div class="result" id="result">
-            <!-- Result will appear here -->
-        </div>
+        <div class="result" id="result"></div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
