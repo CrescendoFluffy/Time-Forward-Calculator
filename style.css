@@ -39,12 +39,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.button-group {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
 button {
   margin-top: 20px;
   width: 100%;
@@ -61,14 +55,6 @@ button:hover {
   background-color: #2980b9;
 }
 
-.reset-btn {
-  background-color: #e74c3c;
-}
-
-.reset-btn:hover {
-  background-color: #c0392b;
-}
-
 .result {
   margin-top: 25px;
   background: #ecf0f1;
@@ -81,9 +67,33 @@ button:hover {
   color: #2c3e50;
 }
 
-.live-time {
-  margin-top: 15px;
-  font-style: italic;
-  color: #7f8c8d;
-  text-align: center;
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .container {
+    padding: 15px;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .input-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-group label {
+    margin-bottom: 5px;
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
 }
